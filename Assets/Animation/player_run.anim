@@ -80,9 +80,16 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: CreateShadowEffect
+    functionName: RunShadow
     data: 
     objectReferenceParameter: {fileID: 179470548481660495, guid: be29bfd37e08e954283b85d04327c552, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: RandDust
+    data: 
+    objectReferenceParameter: {fileID: 8979524159159190410, guid: df48702aee142774aa46bd2d37c0d149, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
