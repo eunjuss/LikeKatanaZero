@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -258,5 +259,15 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(wallChk.position, Vector2.right * isRight * wallchkDistance);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 보스 씬 진입 포탈과 충돌 체크
+        if (other.CompareTag("BossScene"))
+        {
+            SceneManager.LoadScene("Boss");
+        }
+    }
+
 
 }
