@@ -12,6 +12,7 @@ public class ShootingEnemy : MonoBehaviour
     private Transform player; // 플레이어의 위치 정보
     private float shootTimer; // 발사 타이머
     private SpriteRenderer spriteRenderer; // 스프라이트 방향 전환용
+    private Animator animator; // 애니메이션 컨트롤러
 
 
     void Start()
@@ -20,6 +21,7 @@ public class ShootingEnemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         shootTimer = shootingInterval; // 타이머 초기화
+        animator = GetComponent<Animator>(); // 애니메이터 초기화
     }
 
     void Update()
@@ -60,6 +62,14 @@ public class ShootingEnemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        // Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+
+    // 적 캐릭터 사망 애니메이션 재생
+    public void PlayDeathAnimation()
+    {
+        animator.SetBool("Death", true);
+        // 선택사항: 애니메이션 종료 후 오브젝트 제거를 위해
+        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
     }
 }
